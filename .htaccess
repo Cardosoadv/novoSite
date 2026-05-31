@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /novoSite/
+  
+  DirectoryIndex vue.html index.html
+
+  
+  # Se for o próprio vue.html, pare o processamento para evitar loops
+  RewriteRule ^vue\.html$ - [L]
+  
+  # Se a requisição não for para um arquivo existente
+  RewriteCond %{REQUEST_FILENAME} !-f
+  # Se a requisição não for para um diretório existente
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Redireciona todas as outras requisições para vue.html
+  RewriteRule . vue.html [L]
+</IfModule>
