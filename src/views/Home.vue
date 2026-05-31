@@ -241,7 +241,7 @@
                     <select id="area" v-model="form.area" class="form-select-custom">
                       <option value="">Selecione uma especialidade</option>
                       <option v-for="area in areas" :key="area.id" :value="area.id">
-                        {{ area.area_interesse }}
+                        {{ area.nome }}
                       </option>
                     </select>
                   </div>
@@ -346,8 +346,8 @@ export default {
 
     const fetchAreas = async () => {
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/areas`)
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const res = await fetch(`${base.replace(/\/$/, '')}/areas`)
         if (res.ok) {
           areas.value = await res.json()
         }
@@ -371,11 +371,11 @@ export default {
       submitErrors.value = []
       
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         const csrfHeader = document.querySelector('meta[name="csrf-header"]').getAttribute('content') || 'X-CSRF-TOKEN'
 
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/contact`, {
+        const res = await fetch(`${base.replace(/\/$/, '')}/contact`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

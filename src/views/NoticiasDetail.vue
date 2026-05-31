@@ -122,8 +122,8 @@ export default {
       error.value = false
       
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const url = `${base.replace(/\/$/, '')}/api/noticias/${slug}`
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const url = `${base.replace(/\/$/, '')}/noticias/${slug}`
         const res = await fetch(url)
         
         if (res.ok) {
