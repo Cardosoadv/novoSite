@@ -6,6 +6,7 @@ import PaginaCivil from '../views/PaginaCivil.vue'
 import PaginaAdministrativo from '../views/PaginaAdministrativo.vue'
 import PaginaContratos from '../views/PaginaContratos.vue'
 import PaginaColaborativa from '../views/PaginaColaborativa.vue'
+import AreaCliente from '../views/AreaCliente.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/pagina/advocacia-colaborativa',
     name: 'PaginaColaborativa',
     component: PaginaColaborativa
+  },
+  {
+    path: '/area-cliente',
+    name: 'AreaCliente',
+    component: AreaCliente
   },
   {
     path: '/:pathMatch(.*)*',

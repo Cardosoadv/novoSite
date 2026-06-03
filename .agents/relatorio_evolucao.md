@@ -2,6 +2,15 @@
 
 Este arquivo registra o progresso, as modificações estruturais e o versionamento do site institucional contido no diretório `novoSite`.
 
+## [v1.0.3] - 2026-06-03
+
+### ✨ Criação da Área do Cliente
+
+- **Frontend (Vue 3 SPA)**:
+  - Adicionado o componente `AreaCliente.vue` (`src/views/AreaCliente.vue`) contendo o formulário para solicitação do Magic Link da API de `processos`. O design segue o padrão premium (Glassmorphism e cores ouro/marinho).
+  - Atualizada a rota `src/router/index.js` para registrar `/area-cliente`.
+  - Inserido um link discreto no footer no arquivo `src/App.vue` para acesso à Área do Cliente.
+
 ## [v1.0.2] - 2026-06-03
 
 ### ✨ Importação do Favicon

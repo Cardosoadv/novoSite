@@ -82,10 +82,15 @@
         </div>
         
         <div class="footer-bottom py-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
-          <p class="mb-0">&copy; {{ currentYear }} Cardoso & Bruno Sociedade de Advogados. Todos os direitos reservados.</p>
-          <a :href="adminUrl" class="admin-login-link mt-2 mt-md-0" title="Acessar o Painel Administrativo">
-            <i class="bi bi-shield-lock"></i> Painel Administrativo
-          </a>
+          <p class="mb-0 text-center text-md-start">&copy; {{ currentYear }} Cardoso & Bruno Sociedade de Advogados. Todos os direitos reservados.</p>
+          <div class="d-flex gap-3 align-items-center mt-3 mt-md-0">
+            <router-link to="/area-cliente" class="discreet-link" title="Acessar a Área do Cliente">
+              <i class="bi bi-person-badge"></i> Área do Cliente
+            </router-link>
+            <a :href="adminUrl" class="admin-login-link" title="Acessar o Painel Administrativo">
+              <i class="bi bi-shield-lock"></i> Painel Administrativo
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -362,6 +367,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .admin-login-link:hover {
   background: var(--gold);
   color: var(--navy-dark);
+}
+
+.discreet-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.discreet-link:hover {
+  color: var(--gold);
 }
 
 /* ==========================================================================
