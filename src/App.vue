@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     <!-- Navbar Premium com Efeito Glassmorphism -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar">
       <div class="container px-3 px-md-5">
@@ -43,7 +44,7 @@
     </nav>
 
     <!-- Transições de Página Fluidas -->
-    <main class="main-content">
+    <main id="main-content" class="main-content" tabindex="-1">
       <router-view v-slot="{ Component }">
         <transition name="page-fade" mode="out-in">
           <component :is="Component" />
@@ -262,6 +263,25 @@ body {
 /* ==========================================================================
    ACESSIBILIDADE E FOCUS VISIBLE
    ========================================================================== */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  background: var(--gold);
+  color: var(--navy-dark);
+  padding: 10px 20px;
+  z-index: 9999;
+  transition: top 0.3s;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--gold) !important;
   outline-offset: 3px !important;
