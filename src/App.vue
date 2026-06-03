@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
     <!-- Navbar Premium com Efeito Glassmorphism -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar">
       <div class="container px-3 px-md-5">
@@ -43,7 +45,7 @@
     </nav>
 
     <!-- Transições de Página Fluidas -->
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="page-fade" mode="out-in">
           <component :is="Component" />
@@ -150,6 +152,29 @@ export default {
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --glass-bg: rgba(13, 27, 42, 0.85);
   --glass-border: rgba(201, 168, 76, 0.18);
+}
+
+/* ==========================================================================
+   SKIP LINK
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--gold);
+  color: var(--navy-dark);
+  padding: 8px 16px;
+  z-index: 2000;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom-right-radius: 4px;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 /* Reset e Estilos de Base */
