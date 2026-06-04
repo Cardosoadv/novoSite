@@ -4,6 +4,9 @@
   
   DirectoryIndex vue.html index.html
 
+  # Sitemap Proxy para API Backend (usando proxy PHP para contornar problema de roteamento do CI4)
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
   
   # Se for o próprio vue.html, pare o processamento para evitar loops
   RewriteRule ^vue\.html$ - [L]

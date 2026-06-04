@@ -2,6 +2,38 @@
 
 Este arquivo registra o progresso, as modificações estruturais e o versionamento do site institucional contido no diretório `novoSite`.
 
+## [v1.0.9] - 2026-06-04
+
+### 🐛 Correção do Erro de Renderização do XML no Sitemap e Leitura do .env
+
+- **Frontend (Servidor)**:
+  - O script `sitemap.php` foi aprimorado para realizar a higienização (sanitização) do XML retornado pela API do backend.
+  - Remove os comentários de Debug View injetados pelo CodeIgniter (ex: `<!-- DEBUG-VIEW ... -->`), além de limpar qualquer caractere ou espaço em branco antes e depois do XML. Isso previne o erro `Start tag expected, '<' not found` no navegador ao carregar o sitemap.
+  - Implementada a leitura manual do arquivo `.env` como fallback caso o script seja executado fora do contexto do framework (via redirecionamento do Apache / Apache rewrite), permitindo a leitura correta de `SitemapUrl`.
+
+## [v1.0.8] - 2026-06-03
+
+### 🐛 Melhoria no Proxy do Sitemap e Correção de View Ausente
+
+- **Frontend (Servidor)**:
+  - O script `sitemap.php` foi refatorado para utilizar `cURL` ao invés de `file_get_contents`. Isso resolve problemas de conectividade em ambientes locais (XAMPP) no Windows, garantindo que a requisição não trave ao tentar resolver o DNS. O cURL agora aponta forçadamente para `127.0.0.1` e passa o header `Host: localhost`.
+
+## [v1.0.7] - 2026-06-03
+
+### 🐛 Correção do Sitemap (404 CodeIgniter)
+
+- **Frontend (Servidor)**:
+  - Adicionado o arquivo `sitemap.php` que atua como um proxy para buscar o XML diretamente do backend via HTTP e retorná-lo com o Content-Type correto.
+  - Atualizada a regra no `.htaccess` para redirecionar `sitemap.xml` para `sitemap.php`. Isso corrige o problema onde o redirecionamento interno anterior não alterava o `REQUEST_URI` visto pelo roteador do CodeIgniter 4, resultando no erro `404 Can't find a route for 'GET: novoSite/sitemap.xml'`.
+
+## [v1.0.6] - 2026-06-03
+
+### ✨ Configuração do Sitemap
+
+- **Servidor (.htaccess)**:
+  - Adicionada regra de redirecionamento interno (`RewriteRule`) para o arquivo `sitemap.xml`.
+  - O acesso à `localhost/novoSite/sitemap.xml` agora mapeia para a API de sitemap do backend.
+
 ## [v1.0.5] - 2026-06-03
 
 ### 🐛 Correção da Rota de Notícias na Home

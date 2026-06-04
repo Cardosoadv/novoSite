@@ -112,8 +112,8 @@ export default {
     })
 
     const adminUrl = computed(() => {
-      const base = window.__APP_CONFIG__?.baseUrl || '/'
-      return `${base.replace(/\/$/, '')}/admin`
+      const base = window.__APP_CONFIG__?.ordoUrl
+      return `${base.replace(/\/$/, '')}`
     })
 
     const toggleNav = () => {
