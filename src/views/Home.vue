@@ -241,7 +241,7 @@
                     <select id="area" v-model="form.area" class="form-select-custom">
                       <option value="">Selecione uma especialidade</option>
                       <option v-for="area in areas" :key="area.id" :value="area.id">
-                        {{ area.area_interesse }}
+                        {{ area.nome }}
                       </option>
                     </select>
                   </div>
@@ -331,8 +331,8 @@ export default {
 
     const fetchLatestNews = async () => {
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/noticias?limit=3`)
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const res = await fetch(`${base.replace(/\/$/, '')}/noticias?limit=3`)
         if (res.ok) {
           const result = await res.json()
           news.value = result.data || []
@@ -346,10 +346,12 @@ export default {
 
     const fetchAreas = async () => {
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/areas`)
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const res = await fetch(`${base.replace(/\/$/, '')}/areas`)
         if (res.ok) {
-          areas.value = await res.json()
+          const data = await res.json()
+          // O backend retorna array direto ou objeto com .data
+          areas.value = Array.isArray(data) ? data : (data.data || [])
         }
       } catch (err) {
         console.error('Erro ao buscar áreas:', err)
@@ -371,16 +373,22 @@ export default {
       submitErrors.value = []
       
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        const csrfHeader = document.querySelector('meta[name="csrf-header"]').getAttribute('content') || 'X-CSRF-TOKEN'
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
 
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/contact`, {
+        // Leitura segura do CSRF Token (pode não existir quando servido sem PHP)
+        const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]')
+        const csrfHeaderMeta = document.querySelector('meta[name="csrf-header"]')
+        const csrfToken = csrfTokenMeta ? csrfTokenMeta.getAttribute('content') : ''
+        const csrfHeader = csrfHeaderMeta ? csrfHeaderMeta.getAttribute('content') : 'X-CSRF-TOKEN'
+
+        const headers = { 'Content-Type': 'application/json' }
+        if (csrfToken) {
+          headers[csrfHeader] = csrfToken
+        }
+
+        const res = await fetch(`${base.replace(/\/$/, '')}/contact`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            [csrfHeader]: csrfToken
-          },
+          headers,
           body: JSON.stringify(form.value)
         })
 
@@ -388,17 +396,19 @@ export default {
         
         // Atualiza CSRF Token de retorno se o backend enviar no cabeçalho
         const newCsrf = res.headers.get('X-CSRF-TOKEN')
-        if (newCsrf) {
-          document.querySelector('meta[name="csrf-token"]').setAttribute('content', newCsrf)
+        if (newCsrf && csrfTokenMeta) {
+          csrfTokenMeta.setAttribute('content', newCsrf)
         }
 
         if (res.ok && result.status === 'success') {
           submitSuccess.value = true
-          successMessage.value = result.message
+          successMessage.value = result.message || 'Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.'
         } else {
           // Trata erros de validação retornados pelo CI4 ApiController
-          if (result.messages) {
+          if (result.messages && typeof result.messages === 'object') {
             submitErrors.value = Object.values(result.messages)
+          } else if (Array.isArray(result.errors)) {
+            submitErrors.value = result.errors
           } else {
             submitErrors.value = [result.message || 'Ocorreu um erro ao enviar sua mensagem. Tente novamente.']
           }

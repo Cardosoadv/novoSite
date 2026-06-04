@@ -167,11 +167,11 @@ export default {
     const fetchArticles = async () => {
       loading.value = true
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const url = `${base.replace(/\/$/, '')}/api/noticias?page=${currentPage.value}&limit=${limit.value}&search=${encodeURIComponent(searchQuery.value)}`
+        const base = window.__APP_CONFIG__?.apiUrl
+        const url = `${base.replace(/\/$/, '')}/noticias?page=${currentPage.value}&limit=${limit.value}&search=${encodeURIComponent(searchQuery.value)}`
         const res = await fetch(url)
         if (res.ok) {
-          const result = await res.json()
+          const result = await res.json() 
           articles.value = result.data || []
           total.value = result.total || 0
           lastPage.value = result.last_page || 1
@@ -271,7 +271,7 @@ export default {
    ========================================================================== */
 .news-hero {
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80');
+  background-image: url('../../assets/img/themis.jpeg');
   background-size: cover;
   background-position: center;
   height: 50vh;
