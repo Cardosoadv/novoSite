@@ -2,6 +2,24 @@
 
 Este arquivo registra o progresso, as modificações estruturais e o versionamento do site institucional contido no diretório `novoSite`.
 
+## [v1.0.5] - 2026-06-03
+
+### 🐛 Correção da Rota de Notícias na Home
+
+- **Frontend (Vue 3 SPA)**:
+  - Corrigido o `fetchLatestNews` no componente `Home.vue` que estava utilizando a `baseUrl` e a rota legada `/api/noticias`.
+  - Agora a busca das últimas notícias na Home utiliza corretamente a `apiUrl` e o endpoint `/noticias` configurado, alinhando com a listagem de notícias.
+
+## [v1.0.4] - 2026-06-03
+
+### 🐛 Correção de Bug do Logo (404)
+
+- **Frontend (Vue 3 SPA)**:
+  - O arquivo `logo.png` não estava sendo exibido na navbar e footer porque estava referenciando um diretório inexistente gerado incorretamente pelo build.
+  - Modificado `src/App.vue` para remover a importação explícita do `logo.png` via bundler.
+  - O `logoUrl` agora é resolvido de forma estática com base no `window.__APP_CONFIG__.baseUrl` apontando para `assets/img/logo.png`.
+  - Essa mudança previne que a diretiva de _Single File App_ cause problemas com o tamanho do bundle e perda do caminho da imagem em produção.
+
 ## [v1.0.3] - 2026-06-03
 
 ### ✨ Criação da Área do Cliente

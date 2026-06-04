@@ -122,7 +122,7 @@ export default {
       error.value = false
       
       try {
-        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const base = window.__APP_CONFIG__?.apiUrl
         const url = `${base.replace(/\/$/, '')}/noticias/${slug}`
         const res = await fetch(url)
         

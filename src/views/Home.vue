@@ -331,8 +331,8 @@ export default {
 
     const fetchLatestNews = async () => {
       try {
-        const base = window.__APP_CONFIG__?.baseUrl || '/'
-        const res = await fetch(`${base.replace(/\/$/, '')}/api/noticias?limit=3`)
+        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const res = await fetch(`${base.replace(/\/$/, '')}/noticias?limit=3`)
         if (res.ok) {
           const result = await res.json()
           news.value = result.data || []

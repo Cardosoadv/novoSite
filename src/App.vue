@@ -99,7 +99,6 @@
 
 <script>
 import { ref, computed } from 'vue'
-import logoImg from '../assets/img/logo.png'
 
 export default {
   name: 'App',
@@ -107,7 +106,10 @@ export default {
     const isNavOpen = ref(false)
     const currentYear = computed(() => new Date().getFullYear())
     
-    const logoUrl = computed(() => logoImg)
+    const logoUrl = computed(() => {
+      const base = window.__APP_CONFIG__?.baseUrl || '/'
+      return `${base.replace(/\/$/, '')}/assets/img/logo.png`
+    })
 
     const adminUrl = computed(() => {
       const base = window.__APP_CONFIG__?.baseUrl || '/'

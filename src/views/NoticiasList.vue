@@ -167,7 +167,7 @@ export default {
     const fetchArticles = async () => {
       loading.value = true
       try {
-        const base = window.__APP_CONFIG__?.apiUrl || '/'
+        const base = window.__APP_CONFIG__?.apiUrl
         const url = `${base.replace(/\/$/, '')}/noticias?page=${currentPage.value}&limit=${limit.value}&search=${encodeURIComponent(searchQuery.value)}`
         const res = await fetch(url)
         if (res.ok) {

@@ -91,8 +91,8 @@ export default {
 
       try {
         // Integração com a API de Processos
-        const baseUrl = window.__APP_CONFIG__?.processosApiUrl || '/api/processos';
-        const response = await fetch(`${baseUrl}/magic-link`, {
+        const baseUrl = window.__APP_CONFIG__?.apiUrl;
+        const response = await fetch(`${baseUrl}cliente/auth/solicitar`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
