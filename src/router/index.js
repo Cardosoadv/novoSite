@@ -7,6 +7,7 @@ import PaginaAdministrativo from '../views/PaginaAdministrativo.vue'
 import PaginaContratos from '../views/PaginaContratos.vue'
 import PaginaColaborativa from '../views/PaginaColaborativa.vue'
 import AreaCliente from '../views/AreaCliente.vue'
+import ClientePanel from '../views/ClientePanel.vue'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/area-cliente',
     name: 'AreaCliente',
     component: AreaCliente
+  },
+  {
+    path: '/cliente',
+    name: 'ClientePanel',
+    component: ClientePanel
   },
   {
     path: '/:pathMatch(.*)*',
