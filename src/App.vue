@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <a href="#main-content" class="visually-hidden-focusable nav-cta position-fixed start-0 top-0 m-3" style="z-index: 9999;">Pular para o conteúdo</a>
     <!-- Navbar Premium com Efeito Glassmorphism -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar">
       <div class="container px-3 px-md-5">
@@ -43,7 +44,7 @@
     </nav>
 
     <!-- Transições de Página Fluidas -->
-    <main class="main-content">
+    <main id="main-content" class="main-content" tabindex="-1">
       <router-view v-slot="{ Component }">
         <transition name="page-fade" mode="out-in">
           <component :is="Component" />
