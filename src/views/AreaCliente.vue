@@ -50,7 +50,7 @@
               </form>
 
               <!-- Mensagem de Sucesso -->
-              <div v-else class="success-message text-center py-4">
+              <div v-else class="success-message text-center py-4" aria-live="polite">
                 <div class="icon-success mb-3">
                   <i class="bi bi-envelope-check-fill text-gold fs-1"></i>
                 </div>
