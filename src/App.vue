@@ -80,7 +80,7 @@
               <strong>Belo Horizonte / MG</strong><br />
               Rua Roberto Lúcio Aroeira, 417, Sala 01<br />
               Bairro Itapoã — CEP 31710-055<br />
-              <abbr title="Telefone">Tel:</abbr> (31) 9.9224-6996
+              <abbr title="Telefone">Tel:</abbr> <a href="tel:+5531992246996" class="footer-contact-link">(31) 9.9224-6996</a>
             </address>
           </div>
         </div>
@@ -366,6 +366,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-links a:hover {
   color: var(--gold);
   padding-left: 5px;
+}
+
+.footer-contact-link {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.footer-contact-link:hover {
+  color: var(--gold);
 }
 
 .footer-address {
