@@ -74,7 +74,7 @@
             <div class="expertise-card">
               <h3 class="expertise-title">Direito Civil</h3>
               <p class="expertise-text">Cobranças, indenizações por danos morais/materiais, direito de família, heranças e usucapião.</p>
-              <router-link to="/pagina/direito-civil" class="expertise-link">
+              <router-link to="/pagina/direito-civil" class="expertise-link" aria-label="Ver detalhes sobre Direito Civil">
                 Ver Detalhes <i class="bi bi-arrow-right"></i>
               </router-link>
             </div>
@@ -84,7 +84,7 @@
             <div class="expertise-card">
               <h3 class="expertise-title">Direito Administrativo</h3>
               <p class="expertise-text">Assessoria em licitações, processos e sanções públicas, defesas regulatórias e servidores.</p>
-              <router-link to="/pagina/direito-administrativo" class="expertise-link">
+              <router-link to="/pagina/direito-administrativo" class="expertise-link" aria-label="Ver detalhes sobre Direito Administrativo">
                 Ver Detalhes <i class="bi bi-arrow-right"></i>
               </router-link>
             </div>
@@ -94,7 +94,7 @@
             <div class="expertise-card">
               <h3 class="expertise-title">Contratos</h3>
               <p class="expertise-text">Elaboração, análise minuciosa, renegociação e revisão de pactos cíveis e comerciais complexos.</p>
-              <router-link to="/pagina/contratos-negocios" class="expertise-link">
+              <router-link to="/pagina/contratos-negocios" class="expertise-link" aria-label="Ver detalhes sobre Contratos">
                 Ver Detalhes <i class="bi bi-arrow-right"></i>
               </router-link>
             </div>
@@ -104,7 +104,7 @@
             <div class="expertise-card">
               <h3 class="expertise-title">Advocacia Colaborativa</h3>
               <p class="expertise-text">Resolução consensual de conflitos de forma humanizada, reduzindo custos e litígios judiciais prolongados.</p>
-              <router-link to="/pagina/advocacia-colaborativa" class="expertise-link">
+              <router-link to="/pagina/advocacia-colaborativa" class="expertise-link" aria-label="Ver detalhes sobre Advocacia Colaborativa">
                 Ver Detalhes <i class="bi bi-arrow-right"></i>
               </router-link>
             </div>
@@ -143,7 +143,7 @@
                 <span class="news-date">{{ formatDate(article.published_at) }}</span>
                 <h3 class="news-card-title">{{ article.title }}</h3>
                 <p class="news-card-excerpt">{{ article.summary }}</p>
-                <router-link :to="'/noticias/' + article.slug" class="news-card-link">
+                <router-link :to="'/noticias/' + article.slug" class="news-card-link" :aria-label="'Ler artigo sobre ' + article.title">
                   Ler Artigo <i class="bi bi-arrow-right"></i>
                 </router-link>
               </div>
@@ -179,14 +179,18 @@
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-telephone"></i></div>
                 <div>
                   <span class="contact-label">WhatsApp / Telefone</span>
-                  <p class="contact-value">(31) 9.9224-6996</p>
+                  <p class="contact-value">
+                    <a href="tel:+5531992246996" class="text-decoration-none text-reset">(31) 9.9224-6996</a>
+                  </p>
                 </div>
               </div>
               <div class="contact-item d-flex gap-3">
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-envelope"></i></div>
                 <div>
                   <span class="contact-label">E-mail de Contato</span>
-                  <p class="contact-value">contato@cardosoebruno.adv.br</p>
+                  <p class="contact-value">
+                    <a href="mailto:contato@cardosoebruno.adv.br" class="text-decoration-none text-reset">contato@cardosoebruno.adv.br</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,7 +199,7 @@
           <!-- Formulário -->
           <div class="col-lg-7">
             <div class="contact-form-container">
-              <div v-if="submitSuccess" class="success-card text-center p-5 animate-fade-in">
+              <div v-if="submitSuccess" class="success-card text-center p-5 animate-fade-in" role="alert" aria-live="polite">
                 <div class="success-icon" aria-hidden="true"><i class="bi bi-check-circle"></i></div>
                 <h3 class="mt-4 mb-3">Enviado com Sucesso!</h3>
                 <p>{{ successMessage }}</p>
@@ -257,7 +261,7 @@
                     ></textarea>
                   </div>
                   
-                  <div v-if="submitErrors.length > 0" class="col-12 alert-error">
+                  <div v-if="submitErrors.length > 0" class="col-12 alert-error" role="alert" aria-live="polite">
                     <ul>
                       <li v-for="(err, idx) in submitErrors" :key="idx" v-html="err"></li>
                     </ul>
