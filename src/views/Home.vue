@@ -179,14 +179,18 @@
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-telephone"></i></div>
                 <div>
                   <span class="contact-label">WhatsApp / Telefone</span>
-                  <p class="contact-value">(31) 9.9224-6996</p>
+                  <p class="contact-value">
+                    <a href="tel:+5531992246996" class="text-decoration-none text-reset">(31) 9.9224-6996</a>
+                  </p>
                 </div>
               </div>
               <div class="contact-item d-flex gap-3">
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-envelope"></i></div>
                 <div>
                   <span class="contact-label">E-mail de Contato</span>
-                  <p class="contact-value">contato@cardosoebruno.adv.br</p>
+                  <p class="contact-value">
+                    <a href="mailto:contato@cardosoebruno.adv.br" class="text-decoration-none text-reset">contato@cardosoebruno.adv.br</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,7 +199,7 @@
           <!-- Formulário -->
           <div class="col-lg-7">
             <div class="contact-form-container">
-              <div v-if="submitSuccess" class="success-card text-center p-5 animate-fade-in">
+              <div v-if="submitSuccess" class="success-card text-center p-5 animate-fade-in" role="status" aria-live="polite">
                 <div class="success-icon" aria-hidden="true"><i class="bi bi-check-circle"></i></div>
                 <h3 class="mt-4 mb-3">Enviado com Sucesso!</h3>
                 <p>{{ successMessage }}</p>
@@ -257,7 +261,7 @@
                     ></textarea>
                   </div>
                   
-                  <div v-if="submitErrors.length > 0" class="col-12 alert-error">
+                  <div v-if="submitErrors.length > 0" class="col-12 alert-error" role="alert">
                     <ul>
                       <li v-for="(err, idx) in submitErrors" :key="idx" v-html="err"></li>
                     </ul>
