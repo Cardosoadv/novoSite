@@ -143,7 +143,7 @@
                 <span class="news-date">{{ formatDate(article.published_at) }}</span>
                 <h3 class="news-card-title">{{ article.title }}</h3>
                 <p class="news-card-excerpt">{{ article.summary }}</p>
-                <router-link :to="'/noticias/' + article.slug" class="news-card-link">
+                <router-link :to="'/noticias/' + article.slug" class="news-card-link" :aria-label="'Ler artigo completo sobre ' + article.title">
                   Ler Artigo <i class="bi bi-arrow-right"></i>
                 </router-link>
               </div>
@@ -179,14 +179,14 @@
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-telephone"></i></div>
                 <div>
                   <span class="contact-label">WhatsApp / Telefone</span>
-                  <p class="contact-value">(31) 9.9224-6996</p>
+                  <p class="contact-value"><a href="tel:31992246996" class="text-decoration-none text-reset">(31) 9.9224-6996</a></p>
                 </div>
               </div>
               <div class="contact-item d-flex gap-3">
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-envelope"></i></div>
                 <div>
                   <span class="contact-label">E-mail de Contato</span>
-                  <p class="contact-value">contato@cardosoebruno.adv.br</p>
+                  <p class="contact-value"><a href="mailto:contato@cardosoebruno.adv.br" class="text-decoration-none text-reset">contato@cardosoebruno.adv.br</a></p>
                 </div>
               </div>
             </div>
