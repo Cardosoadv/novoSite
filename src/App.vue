@@ -16,12 +16,13 @@
           type="button" 
           @click="toggleNav"
           :aria-expanded="isNavOpen" 
+          aria-controls="navbarMain"
           aria-label="Alternar navegação"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end" :class="{ 'show': isNavOpen }">
+        <div id="navbarMain" class="collapse navbar-collapse justify-content-end" :class="{ 'show': isNavOpen }">
           <ul class="navbar-nav align-items-center gap-3 gap-lg-4 my-3 my-lg-0 me-lg-4">
             <li class="nav-item">
               <router-link to="/#expertise" class="nav-link-custom" @click="closeNav">Áreas de Atuação</router-link>
