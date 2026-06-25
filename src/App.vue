@@ -17,11 +17,12 @@
           @click="toggleNav"
           :aria-expanded="isNavOpen" 
           aria-label="Alternar navegação"
+          aria-controls="navbarMain"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end" :class="{ 'show': isNavOpen }">
+        <div class="collapse navbar-collapse justify-content-end" :class="{ 'show': isNavOpen }" id="navbarMain">
           <ul class="navbar-nav align-items-center gap-3 gap-lg-4 my-3 my-lg-0 me-lg-4">
             <li class="nav-item">
               <router-link to="/#expertise" class="nav-link-custom" @click="closeNav">Áreas de Atuação</router-link>
@@ -80,7 +81,7 @@
               <strong>Belo Horizonte / MG</strong><br />
               Rua Roberto Lúcio Aroeira, 417, Sala 01<br />
               Bairro Itapoã — CEP 31710-055<br />
-              <abbr title="Telefone">Tel:</abbr> (31) 9.9224-6996
+              <abbr title="Telefone">Tel:</abbr> <a href="tel:+5531992246996" class="text-decoration-none text-reset">(31) 9.9224-6996</a>
             </address>
           </div>
         </div>
