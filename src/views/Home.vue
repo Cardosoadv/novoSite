@@ -179,14 +179,14 @@
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-telephone"></i></div>
                 <div>
                   <span class="contact-label">WhatsApp / Telefone</span>
-                  <p class="contact-value">(31) 9.9224-6996</p>
+                  <p class="contact-value"><a href="tel:+5531992246996" class="text-decoration-none text-reset">(31) 9.9224-6996</a></p>
                 </div>
               </div>
               <div class="contact-item d-flex gap-3">
                 <div class="contact-icon" aria-hidden="true"><i class="bi bi-envelope"></i></div>
                 <div>
                   <span class="contact-label">E-mail de Contato</span>
-                  <p class="contact-value">contato@cardosoebruno.adv.br</p>
+                  <p class="contact-value"><a href="mailto:contato@cardosoebruno.adv.br" class="text-decoration-none text-reset">contato@cardosoebruno.adv.br</a></p>
                 </div>
               </div>
             </div>
