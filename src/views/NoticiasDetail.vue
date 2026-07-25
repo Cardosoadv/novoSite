@@ -91,7 +91,7 @@
                 <div class="news-card-content">
                   <span class="news-date">{{ formatDate(rel.published_at) }}</span>
                   <h3 class="news-card-title">{{ rel.title }}</h3>
-                  <router-link :to="'/noticias/' + rel.slug" class="news-card-link">
+                  <router-link :to="'/noticias/' + rel.slug" class="news-card-link" :aria-label="'Ler artigo sobre ' + rel.title">
                     Ler Artigo <i class="bi bi-arrow-right"></i>
                   </router-link>
                 </div>
