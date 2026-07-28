@@ -26,6 +26,7 @@
                 @click="setQuickSearch('')" 
                 class="btn-filter"
                 :class="{ 'active': searchQuery === '' }"
+                :aria-pressed="searchQuery === '' ? 'true' : 'false'"
               >
                 Todos
               </button>
@@ -33,6 +34,7 @@
                 @click="setQuickSearch('Direito Civil')" 
                 class="btn-filter"
                 :class="{ 'active': searchQuery === 'Direito Civil' }"
+                :aria-pressed="searchQuery === 'Direito Civil' ? 'true' : 'false'"
               >
                 Direito Civil
               </button>
@@ -40,6 +42,7 @@
                 @click="setQuickSearch('Administrativo')" 
                 class="btn-filter"
                 :class="{ 'active': searchQuery === 'Administrativo' }"
+                :aria-pressed="searchQuery === 'Administrativo' ? 'true' : 'false'"
               >
                 Administrativo
               </button>
@@ -47,6 +50,7 @@
                 @click="setQuickSearch('Contratos')" 
                 class="btn-filter"
                 :class="{ 'active': searchQuery === 'Contratos' }"
+                :aria-pressed="searchQuery === 'Contratos' ? 'true' : 'false'"
               >
                 Contratos
               </button>
